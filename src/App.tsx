@@ -153,11 +153,12 @@ const App: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="aspect-video bg-soft-pink-50/50 rounded-[2.5rem] border-2 border-dashed border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:border-soft-pink-300 transition-all">
-                  <div className="text-center group-hover:scale-110 transition-transform">
-                    <ImageIcon className="w-12 h-12 text-soft-pink-200 mx-auto mb-3" />
-                    <span className="text-soft-pink-300 font-bold">תמונת פעילות {i}</span>
-                  </div>
+                <div key={i} className="aspect-video bg-soft-pink-50/50 rounded-[2.5rem] border border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:shadow-xl transition-all">
+                  <img 
+                    src={`/org-activity (${i}).jpeg`} 
+                    alt={`פעילות עמותה ${i}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
               ))}
             </div>
@@ -171,18 +172,16 @@ const App: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-[9/16] bg-soft-pink-50 rounded-[2rem] border-2 border-soft-pink-100 flex items-end p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-all">
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-soft-pink-100 rounded-full"></div>
-                  <div className="w-full h-3/4 bg-white rounded-t-2xl p-4 space-y-3 shadow-inner">
-                    <div className="w-2/3 h-2 bg-soft-pink-50 rounded-full"></div>
-                    <div className="w-full h-2 bg-soft-pink-50 rounded-full"></div>
-                    <div className="w-4/5 h-2 bg-soft-pink-50 rounded-full"></div>
-                    <div className="pt-4 flex justify-center">
-                      <MessageSquare className="w-8 h-8 text-soft-pink-100" />
-                    </div>
+                <div key={i} className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-200 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all">
+                  <div className="h-full w-full overflow-hidden">
+                    <img 
+                      src={`/whatsapp-screenshot (${i}).jpeg`} 
+                      alt={`צילום מסך וואטסאפ ${i}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-soft-pink-500/10 backdrop-blur-[2px]">
-                    <span className="bg-white px-4 py-2 rounded-full text-soft-pink-600 font-bold text-sm shadow-sm">צילום מסך {i}</span>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-soft-pink-500/10 backdrop-blur-[1px] pointer-events-none">
+                    <span className="bg-white/90 px-4 py-2 rounded-full text-soft-pink-600 font-bold text-sm shadow-md">צילום מסך {i}</span>
                   </div>
                 </div>
               ))}
