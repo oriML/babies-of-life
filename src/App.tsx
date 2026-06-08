@@ -100,34 +100,50 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Stories from the Field */}
+      {/* 4. Stories from the Field - War Edition */}
       <section className="py-24 bg-soft-pink-50/20 px-4">
         <div className="max-w-4xl mx-auto space-y-16 text-center">
-          <div className="text-center">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">רגעים של נחת בשטח</h2>
+          <div className="text-center space-y-4">
+            <h2 className="text-5xl font-bold text-gray-900">סיפורים מהמלחמה</h2>
+            <p className="text-xl text-soft-pink-600 font-medium">מאז ה-7.10, הלב שלי פוגש גבורה ושברון לב בכל יום</p>
             <div className="w-24 h-1.5 bg-soft-pink-300 mx-auto rounded-full opacity-50"></div>
           </div>
           
+          {/* Naomi's Story */}
           <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <BookOpen className="w-10 h-10" />
             </div>
             <div className="space-y-4">
-              <h3 className="text-3xl font-bold text-gray-900 leading-tight">החיוך של התינוק של חנה</h3>
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">השקט של שוהם הקטנה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
-                כשפגשתי את חנה, ראיתי אמא שרק רצתה להעניק לתינוק שלה את הכי טוב. כשהבאתי לה את הציוד, ראיתי איך היא נרגעת — היא ידעה שהתינוק שלה ילך לישון שבע הלילה. זה הרגע שבשבילו אני עושה הכל.
+                פגשתי את נעמי באשדוד, אמא לשישה שסוחבת על גבה עול בלתי יאומן. היא בהריון מתקדם, מטפלת בילדה בת 11 אחרי ניתוח לב, והמלחמה השאירה אותם ללא פרנסה. כשמסרתי לה את התמ"ל והטיטולים עבור שוהם התינוקת, ראיתי איך האבן נגולה מעל ליבה. היא רק רצתה לדעת שהתינוקת שבעה בזמן שהיא דואגת לכל השאר.
               </p>
             </div>
           </article>
 
+          {/* Galia's Story */}
           <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <Heart className="w-10 h-10" />
             </div>
             <div className="space-y-4">
-              <h3 className="text-3xl font-bold text-gray-900 leading-tight">להיות רגועה שלא חסר דבר</h3>
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">יד מושטת לגליה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
-                ביוקר המחיה של היום, המשימה להעניק ביטחון תזונתי לתינוק הפכה לאתגר. אני כאן כדי להגיד לאותן אמהות — יש לכן על מי להישען. המתוק שלכן יקבל את כל מה שהוא צריך.
+                גליה עברה לאשדוד עם שלושה קטנטנים באמצע המלחמה, כשהיא פצועה ביד אחרי ניתוח קשה. בעלה לא עבד והם פשוט לא הצליחו להסתדר כלכלית. עזרנו להם עם מטרנות וטיטולים בדיוק ברגעים שהכל נראה אבוד. היום, ברוך השם, בעלה חזר לעבוד והם כבר לא צריכים אותנו. גליה הודתה לי עם דמעות של נחת בעיניים.
+              </p>
+            </div>
+          </article>
+
+          {/* Atara's Story */}
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
+              <AlertCircle className="w-10 h-10" />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">התקווה של עטרה</h3>
+              <p className="text-xl text-gray-600 leading-relaxed font-light">
+                עטרה היא אמא חד הורית גיבורה מאשדוד שמתמודדת עם השלכות של גידול בראש. בתחילת המלחמה היא מצאה את עצמה ללא עבודה ועם תינוק בן חצי שנה שצריך לישון שבע. הגענו אליה עם ארגז חירום והכנסנו אותה לפרויקט שלנו. זה השקט שלה — לדעת שבתוך כל הקושי, האוכל של התינוק מובטח.
               </p>
             </div>
           </article>
