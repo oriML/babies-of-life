@@ -1,29 +1,55 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Heart, Quote, Info, Image as ImageIcon, MessageSquare, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle } from 'lucide-react';
 
 const App: React.FC = () => {
   const donationRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
+  const [showFloatingButton, setShowFloatingButton] = useState(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFloatingButton(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToDonation = () => {
     donationRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleExternalDonate = (amount?: number) => {
-    const baseUrl = 'https://example.com/donate'; // החלף בקישור התרומה האמיתי
+    const baseUrl = 'https://example.com/donate'; 
     window.location.href = amount ? `${baseUrl}?amount=${amount}` : baseUrl;
   };
 
   return (
     <div className="min-h-screen bg-white text-gray-800 selection:bg-soft-pink-200" dir="rtl" style={{ fontFamily: '"Varela Round", sans-serif' }}>
-      {/* כפתור תרומה צדי קבוע */}
-      <div className="fixed left-0 top-1/3 z-[100] flex flex-col items-start pointer-events-none">
+      {/* כפתור תרומה צדי קבוע - עיצוב חדש ואינטראקטיבי */}
+      <div 
+        className={`fixed left-0 top-1/2 -translate-y-1/2 z-[100] transition-all duration-500 transform ${
+          showFloatingButton ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+        }`}
+      >
         <button
           onClick={scrollToDonation}
-          className="pointer-events-auto bg-soft-pink-600 text-white p-5 rounded-r-[2rem] shadow-[4px_0_24px_rgba(232,61,118,0.4)] hover:bg-soft-pink-700 transition-all hover:pr-10 flex flex-col items-center gap-3 group border-y border-r border-white/20"
-          style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+          className="group relative flex items-center bg-soft-pink-600 text-white shadow-[8px_0_30px_rgba(232,61,118,0.3)] hover:bg-soft-pink-700 transition-all duration-300 rounded-r-full p-4 overflow-hidden"
         >
-          <Heart className="w-6 h-6 fill-white group-hover:scale-125 transition-transform" />
-          <span className="font-bold text-xl tracking-wider py-2">לתרומה מהירה</span>
+          <div className="relative z-10 flex items-center gap-3">
+            <Heart className="w-8 h-8 fill-white group-hover:scale-110 transition-transform duration-300" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out font-bold text-xl pr-1">
+              לתרומה מהירה
+            </span>
+          </div>
+          {/* הילה דקורטיבית */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </button>
       </div>
 
@@ -233,7 +259,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-soft-pink-700 text-white/90 text-center px-4">
+      <footer ref={footerRef} className="py-10 bg-soft-pink-700 text-white/90 text-center px-4">
         <p className="text-3xl font-bold mb-4">עמותת עולל עזרה ואהבה</p>
         <p className="text-xl font-medium mb-2">פרויקט תינוקות של החיים</p>
         <p className="font-normal opacity-90 text-sm">מחזקים אימהות, בונים עתיד לתינוקות ושומרים עליהם משובעים</p>
