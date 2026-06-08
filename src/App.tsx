@@ -88,19 +88,27 @@ const App: React.FC = () => {
                 "כל קופסת תמ"ל שאני מעביר היא הבטחה לשקט ושובע. זה המעט שאנחנו יכולים לעשות כדי שכל תינוק יקבל את מה שמגיע לו."
               </p>
             </div>
+            <div className="pt-8">
+              <button 
+                onClick={scrollToDonation}
+                className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
+              >
+                אני רוצה לעזור לעוד אמא
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 4. Stories from the Field */}
       <section className="py-24 bg-soft-pink-50/20 px-4">
-        <div className="max-w-4xl mx-auto space-y-16">
+        <div className="max-w-4xl mx-auto space-y-16 text-center">
           <div className="text-center">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">רגעים של נחת בשטח</h2>
             <div className="w-24 h-1.5 bg-soft-pink-300 mx-auto rounded-full opacity-50"></div>
           </div>
           
-          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <BookOpen className="w-10 h-10" />
             </div>
@@ -112,7 +120,7 @@ const App: React.FC = () => {
             </div>
           </article>
 
-          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <Heart className="w-10 h-10" />
             </div>
@@ -123,6 +131,15 @@ const App: React.FC = () => {
               </p>
             </div>
           </article>
+
+          <div className="pt-12">
+            <button 
+              onClick={scrollToDonation}
+              className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl"
+            >
+              אני רוצה להיות שותף
+            </button>
+          </div>
         </div>
       </section>
 
@@ -151,6 +168,14 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="pt-16 flex justify-center">
+            <button 
+              onClick={scrollToDonation}
+              className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
+            >
+              אני רוצה לעזור לעוד אמא
+            </button>
           </div>
         </div>
       </section>
