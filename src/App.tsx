@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Heart, Quote, Info, Image as ImageIcon, MessageSquare, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle } from 'lucide-react';
+import { Heart, Quote, Info, Image as ImageIcon, MessageSquare, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle, Smartphone, Camera } from 'lucide-react';
 
 const App: React.FC = () => {
   const donationRef = useRef<HTMLDivElement>(null);
@@ -101,7 +101,7 @@ const App: React.FC = () => {
                 <p className="text-lg font-bold text-gray-800 leading-tight">עלייה בצריכת תמ"ל רפואי</p>
               </div>
               <div className="bg-white p-8 rounded-[3rem] shadow-xl border border-soft-pink-50 text-center space-y-4 col-span-2">
-                <p className="text-xl text-gray-600 font-medium">מאות אמהות פונות אלינו בבכי ובייאוש בכל חודש</p>
+                <p className="text-xl text-gray-600 font-medium text-center">מאות אמהות פונות אלינו בבכי ובייאוש בכל חודש</p>
               </div>
             </div>
           </div>
@@ -109,15 +109,15 @@ const App: React.FC = () => {
       </section>
 
       {/* 4. Stories of Help Section (Personal Journeys) */}
-      <section className="py-32 bg-soft-pink-50/20 px-4">
-        <div className="max-w-4xl mx-auto space-y-24">
+      <section className="py-24 bg-soft-pink-50/20 px-4">
+        <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">סיפורים מהשטח</h2>
             <div className="w-24 h-1.5 bg-soft-pink-300 mx-auto rounded-full opacity-50"></div>
           </div>
           
-          <article className="group flex gap-10 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
-            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all">
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <BookOpen className="w-10 h-10" />
             </div>
             <div className="space-y-4">
@@ -128,8 +128,8 @@ const App: React.FC = () => {
             </div>
           </article>
 
-          <article className="group flex gap-10 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
-            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all">
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
               <ImageIcon className="w-10 h-10" />
             </div>
             <div className="space-y-4">
@@ -139,6 +139,56 @@ const App: React.FC = () => {
               </p>
             </div>
           </article>
+        </div>
+      </section>
+
+      {/* NEW: Image Galleries Section */}
+      <section className="py-24 bg-white px-4">
+        <div className="max-w-6xl mx-auto space-y-24">
+          {/* Gallery 1: Regular Activity Images */}
+          <div className="space-y-12">
+            <div className="flex items-center gap-4 border-r-4 border-soft-pink-500 pr-6">
+              <Camera className="w-8 h-8 text-soft-pink-600" />
+              <h2 className="text-4xl font-bold text-gray-900">רגעים של עשייה</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="aspect-video bg-soft-pink-50/50 rounded-[2.5rem] border-2 border-dashed border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:border-soft-pink-300 transition-all">
+                  <div className="text-center group-hover:scale-110 transition-transform">
+                    <ImageIcon className="w-12 h-12 text-soft-pink-200 mx-auto mb-3" />
+                    <span className="text-soft-pink-300 font-bold">תמונת פעילות {i}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Gallery 2: Mobile Screenshots */}
+          <div className="space-y-12">
+            <div className="flex items-center gap-4 border-r-4 border-soft-pink-500 pr-6">
+              <Smartphone className="w-8 h-8 text-soft-pink-600" />
+              <h2 className="text-4xl font-bold text-gray-900">הודעות מהשטח</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="aspect-[9/16] bg-soft-pink-50 rounded-[2rem] border-2 border-soft-pink-100 flex items-end p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-all">
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-soft-pink-100 rounded-full"></div>
+                  <div className="w-full h-3/4 bg-white rounded-t-2xl p-4 space-y-3 shadow-inner">
+                    <div className="w-2/3 h-2 bg-soft-pink-50 rounded-full"></div>
+                    <div className="w-full h-2 bg-soft-pink-50 rounded-full"></div>
+                    <div className="w-4/5 h-2 bg-soft-pink-50 rounded-full"></div>
+                    <div className="pt-4 flex justify-center">
+                      <MessageSquare className="w-8 h-8 text-soft-pink-100" />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-soft-pink-500/10 backdrop-blur-[2px]">
+                    <span className="bg-white px-4 py-2 rounded-full text-soft-pink-600 font-bold text-sm shadow-sm">צילום מסך {i}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-gray-400 text-lg font-light italic">הודעות אמיתיות מאמהות (פרטים מזהים הוסרו לשמירה על פרטיות)</p>
+          </div>
         </div>
       </section>
 
@@ -217,7 +267,7 @@ const App: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-20 text-center">
             <MessageSquare className="w-14 h-14 text-soft-pink-200 mb-6" />
-            <h2 className="text-5xl font-bold">הכרת תודה מהלב</h2>
+            <h2 className="text-5xl font-bold text-gray-900">הכרת תודה מהלב</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
             {[
@@ -237,20 +287,42 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Footer (Designed & Compact) */}
-      <footer ref={footerRef} className="py-12 bg-soft-pink-700 text-white/90 text-center px-4">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-2xl font-bold mb-4">עמותת עולל עזרה ואהבה</p>
-          <p className="text-lg font-medium mb-1 opacity-90">פרויקט תינוקות של החיים</p>
-          <p className="text-sm font-light opacity-80 max-w-md mx-auto leading-relaxed">
-            מחזקים אימהות, בונים עתיד לתינוקות ושומרים עליהם משובעים בכל יום מחדש.
-          </p>
-          <div className="w-20 h-0.5 bg-white/20 mx-auto my-8 rounded-full"></div>
-          <p className="text-xs opacity-60 leading-relaxed">
-            © 2026 כל הזכויות שמורות לעמותת עולל עזרה ואהבה ע"ר. <br />
-            התרומות מוכרות לצרכי מס לפי סעיף 46.
-          </p>
+      {/* 8. Footer (Redesigned & Balanced) */}
+      <footer ref={footerRef} className="bg-soft-pink-700 text-white px-4 pt-16 pb-12 rounded-t-[5rem] overflow-hidden relative">
+        <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
+          <div className="bg-white p-4 rounded-3xl mb-8 shadow-xl">
+            <Heart className="w-10 h-10 text-soft-pink-600 fill-soft-pink-100" />
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12 w-full mb-12 items-start">
+            <div className="space-y-4">
+              <h4 className="text-2xl font-bold">עולל עזרה ואהבה</h4>
+              <p className="text-sm opacity-80 leading-relaxed max-w-xs mx-auto">
+                פועלים למען ביטחון תזונתי לתינוקות וליווי אימהות במצוקה. הבית של כל תינוק רעב.
+              </p>
+            </div>
+            <div className="space-y-4 border-x border-white/10 px-6">
+              <h4 className="text-lg font-bold">צרו קשר</h4>
+              <p className="text-sm opacity-80">טלפון: 050-0000000</p>
+              <p className="text-sm opacity-80">אימייל: info@olel.org.il</p>
+            </div>
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold">קישורים חשובים</h4>
+              <button onClick={scrollToDonation} className="text-sm opacity-80 hover:opacity-100 transition-opacity">תרומה מהירה</button>
+              <p className="text-sm opacity-80">תקנון העמותה</p>
+            </div>
+          </div>
+
+          <div className="w-full h-px bg-white/10 mb-8"></div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4 opacity-60 text-xs">
+            <p>© 2026 כל הזכויות שמורות לעמותת עולל עזרה ואהבה ע"ר</p>
+            <p>התרומות מוכרות לצרכי מס לפי סעיף 46</p>
+            <p>עוצב באהבה למען התינוקות</p>
+          </div>
         </div>
+        {/* Decorative background circle in footer */}
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white opacity-5 rounded-full filter blur-3xl"></div>
       </footer>
     </div>
   );
