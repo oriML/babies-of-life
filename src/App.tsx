@@ -159,6 +159,75 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* 4.1 Additional Heart-to-Heart Stories */}
+      <section className="py-24 bg-white px-4 border-t border-soft-pink-50">
+        <div className="max-w-6xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl font-bold text-gray-900">עוד רגעים שאני לא שוכח</h2>
+            <p className="text-lg text-gray-500">כל פניה היא עולם ומלואו של תקווה ושובע</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Mazal & David */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הבית של מזל ודוד</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                מזל ודוד היו זוג מאושר עד שהשריפה לקחה הכל — את רכושם ואת אביו של דוד. בתוך השכול והדיכאון, מזל פנתה אלי כדי שלפחות לתינוק יהיה את השובע שלו. היא מעולם לא דמיינה שתצטרך לבקש אוכל, ואנחנו כאן כדי לתת לה אותו בכבוד.
+              </p>
+            </div>
+
+            {/* Avishag */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">ההודעה של אבישג</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                בשתיים בלילה קיבלתי הודעה מאבישג. בתוך הליך גירושין קשה וללא תמיכה, היא רק רצתה לדעת שיהיה לה מטרנה וטיטולים למחר. המתנדבים המדהימים שלנו נרתמו מיד כדי לוודא שהיא לא תישאר חסרת אונים מול עריסה ריקה.
+              </p>
+            </div>
+
+            {/* Moti */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">המאבק של מוטי</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                מוטי הוא אבא גיבור שמגדל לבדו תינוק בן חודשיים לאחר שהאם אושפזה. הוא נלחם בכל כוחו כדי להעניק לילד בית חם ולא לוותר עליו. התפקיד שלי הוא להסיר ממנו את הדאגה לאוכל וציוד, כדי שיוכל להתמקד רק בטיפול ובאהבה.
+              </p>
+            </div>
+
+            {/* Lipaz */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הגבורה של ליפז</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                ליפז בת ה-24 עברה התעללות קשה, והתינוקת שלה זקוקה לטיפול מיוחד. היא נלחמת על הילדה שלה מול חובות ומציאות מורכבת. אנחנו שם כדי לספק לה את הביטחון התזונתי והציוד החיוני, כדי שהיא תוכל להמשיך במאבק על עתיד בתה.
+              </p>
+            </div>
+
+            {/* Miri */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הכוחות של מירי</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                מירי מתמודדת עם אי ספיקת כליות ומשפחה ברוכת ילדים, כשגם בעלה זקוק לתמיכה. במציאות רפואית וכלכלית כל כך מורכבת, לספק להם אוכל וביגוד לתינוקות זה לא רק עזרה — זה אוויר לנשימה.
+              </p>
+            </div>
+
+            {/* Emma */}
+            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הבקשה של אמה</h3>
+              <p className="text-gray-600 leading-relaxed font-light flex-grow">
+                אמה מנתניה מטפלת במסירות בתינוקת שלה ובשאר ילדיה. היא פנתה אלינו כי פשוט לא היה לה איך להשיג את הציוד הבסיסי ביותר — טיטולים ואוכל. הידיעה שלתינוקת שלה לא יחסר דבר היא כל מה שהיא צריכה כדי להמשיך הלאה.
+              </p>
+            </div>
+          </div>
+          
+          <div className="pt-12 flex justify-center">
+            <button 
+              onClick={scrollToDonation}
+              className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
+            >
+              אני רוצה לעזור לעוד אמא
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Section */}
       <section className="py-24 bg-white px-4">
         <div className="max-w-6xl mx-auto space-y-24">
