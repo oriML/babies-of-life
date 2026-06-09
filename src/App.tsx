@@ -1,6 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Heart, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle } from 'lucide-react';
 
+const WaveDivider: React.FC<{ color: string; flip?: boolean; position: 'top' | 'bottom' }> = ({ color, flip, position }) => (
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${position === 'top' ? 'top-0' : 'bottom-0'} ${flip ? 'rotate-180' : ''}`}>
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
+      <path 
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113,1.42,1200,42.47V0Z" 
+        style={{ fill: color }}
+      ></path>
+    </svg>
+  </div>
+);
+
 const App: React.FC = () => {
   const donationRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
@@ -31,7 +42,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 selection:bg-soft-pink-200" dir="rtl" style={{ fontFamily: '"Varela Round", sans-serif' }}>
+    <div className="min-h-screen bg-white text-gray-800 selection:bg-soft-pink-200 overflow-x-hidden" dir="rtl" style={{ fontFamily: '"Varela Round", sans-serif' }}>
       {/* 1. Floating Action Button */}
       <div 
         className={`fixed left-0 top-1/2 -translate-y-1/2 z-[100] transition-all duration-500 transform ${
@@ -53,7 +64,7 @@ const App: React.FC = () => {
       </div>
 
       {/* 2. Hero Section */}
-      <section className="relative h-[95vh] flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-soft-pink-100/40 to-white overflow-hidden">
+      <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-soft-pink-100/40 to-white overflow-hidden">
         <div className="max-w-4xl animate-in fade-in zoom-in-95 duration-1000 z-10">
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-full w-fit mx-auto mb-10 shadow-sm border border-soft-pink-100">
             <Heart className="w-16 h-16 text-soft-pink-500 fill-soft-pink-50" />
@@ -67,256 +78,196 @@ const App: React.FC = () => {
           </p>
           <button
             onClick={scrollToDonation}
-            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto"
+            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto relative z-20"
           >
             אני רוצה לתת לתינוק לישון שבע <ChevronLeft className="w-10 h-10" />
           </button>
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-soft-pink-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        {/* Adjusted background circle to not cut the division */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-soft-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse z-0"></div>
+        <WaveDivider color="#ffffff" position="bottom" flip />
       </section>
 
-      {/* 3. The Mission */}
-      <section className="py-24 bg-white px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="max-w-3xl mx-auto space-y-10">
-            <h2 className="text-5xl font-bold leading-tight text-gray-900">המשימה שלי: שקט נפשי לכל אמא</h2>
-            <p className="text-2xl text-gray-600 leading-relaxed font-light">
-              כשאני מגיע עם מארז של אוכל וציוד חיוני, אני לא רק מביא מוצרים. אני מביא את הידיעה שלמתוק שלה לא חסר דבר. אני רואה את הרוגע שמתפשט על פניה של האמא כשהיא יודעת שהיא יכולה להשביע את התינוק שלה בכבוד ובביטחון.
-            </p>
-            <div className="bg-soft-pink-50 p-10 rounded-[3rem] border border-soft-pink-100 shadow-inner">
-              <p className="text-2xl font-medium text-soft-pink-800 leading-relaxed">
-                "כל קופסת תמ"ל שאני מעביר היא הבטחה לשקט ושובע. זה המעט שאנחנו יכולים לעשות כדי שכל תינוק יקבל את מה שמגיע לו."
+      {/* 3. Description Section */}
+      <section className="relative py-32 bg-white px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-block px-6 py-2 bg-soft-pink-100 text-soft-pink-700 rounded-full font-bold text-sm">סיפורו של פעיל בעמותת עולל</div>
+              <h2 className="text-5xl font-bold leading-tight text-gray-900">למה אני פועל בתינוקות של החיים</h2>
+              <p className="text-2xl text-gray-600 leading-relaxed font-light">
+                כשאני מגיע למשפחות, אני רואה עד כמה הציוד הזה קריטי. אני שם כדי להעניק להן את השקט הנפשי שהתינוק שלהן יקבל את כל מה שהוא צריך.
               </p>
+              <div className="bg-soft-pink-50 p-8 rounded-[2.5rem] border border-soft-pink-100 shadow-sm">
+                <p className="text-xl font-medium text-soft-pink-800">
+                  "אני יודע שכל קופסת תמ"ל שאני מוסר מספקת כ-26 בקבוקי חלב — זה שקט של מספר ימים עבור תינוק ואמא שמחכים לנו."
+                </p>
+              </div>
             </div>
-            <div className="pt-8">
-              <button 
-                onClick={scrollToDonation}
-                className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
-              >
-                אני רוצה לעזור לעוד אמא
-              </button>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] shadow-sm border border-soft-pink-100 text-center space-y-4">
+                <span className="text-5xl font-bold text-soft-pink-500">20</span>
+                <p className="text-lg font-bold text-gray-800 leading-tight">פניות חדשות בכל יום</p>
+              </div>
+              <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] shadow-sm border border-soft-pink-100 text-center space-y-4">
+                <span className="text-5xl font-bold text-soft-pink-500">50%</span>
+                <p className="text-lg font-bold text-gray-800 leading-tight">עלייה בביקוש לתמ"ל רפואי</p>
+              </div>
+              <div className="bg-white p-8 rounded-[3rem] shadow-md border border-soft-pink-50 text-center space-y-4 col-span-2">
+                <p className="text-xl text-gray-600 font-medium text-center">אני שומע את קולן של מאות אימהות בכל חודש</p>
+              </div>
             </div>
           </div>
+          <div className="pt-16 flex justify-center">
+            <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
+          </div>
         </div>
+        <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* 4. Stories from the Field - War Edition */}
-      <section className="py-24 bg-soft-pink-50/20 px-4">
-        <div className="max-w-4xl mx-auto space-y-16 text-center">
+      <section className="relative py-40 bg-[#fff5f7] px-4">
+        <div className="max-w-4xl mx-auto space-y-16 text-center relative z-10">
           <div className="text-center space-y-4">
             <h2 className="text-5xl font-bold text-gray-900">סיפורים מהמלחמה</h2>
             <p className="text-xl text-soft-pink-600 font-medium">מאז ה-7.10, הלב שלי פוגש גבורה ושברון לב בכל יום</p>
             <div className="w-24 h-1.5 bg-soft-pink-300 mx-auto rounded-full opacity-50"></div>
           </div>
           
-          {/* Naomi's Story */}
-          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
-            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
-              <BookOpen className="w-10 h-10" />
-            </div>
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><BookOpen className="w-10 h-10" /></div>
             <div className="space-y-4">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">השקט של שוהם הקטנה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
-                פגשתי את נעמי באשדוד, אמא לשישה שסוחבת על גבה עול בלתי יאומן. היא בהריון מתקדם, מטפלת בילדה בת 11 אחרי ניתוח לב, והמלחמה השאירה אותם ללא פרנסה. כשמסרתי לה את התמ"ל והטיטולים עבור שוהם התינוקת, ראיתי איך האבן נגולה מעל ליבה. היא רק רצתה לדעת שהתינוקת שבעה בזמן שהיא דואגת לכל השאר.
+                פגשתי את נעמי באשדוד, אמא לשישה שסוחבת על גבה עול בלתי יאומן. היא בהריון מתקדם והמלחמה השאירה אותם ללא פרנסה. כשמסרתי לה את התמ"ל והטיטולים עבור שוהם התינוקת, ראיתי איך האבן נגולה מעל ליבה. היא רק רצתה לדעת שהתינוקת שבעה.
               </p>
             </div>
           </article>
 
-          {/* Galia's Story */}
-          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
-            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
-              <Heart className="w-10 h-10" />
-            </div>
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><Heart className="w-10 h-10" /></div>
             <div className="space-y-4">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">יד מושטת לגליה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
-                גליה עברה לאשדוד עם שלושה קטנטנים באמצע המלחמה, כשהיא פצועה ביד אחרי ניתוח קשה. בעלה לא עבד והם פשוט לא הצליחו להסתדר כלכלית. עזרנו להם עם מטרנות וטיטולים בדיוק ברגעים שהכל נראה אבוד. היום, ברוך השם, בעלה חזר לעבוד והם כבר לא צריכים אותנו. גליה הודתה לי עם דמעות של נחת בעיניים.
+                גליה עברה לאשדוד באמצע המלחמה, פצועה אחרי ניתוח. עזרנו להם עם מטרנות וטיטולים בדיוק ברגעים שהכל נראה אבוד. היום גליה הודתה לי עם דמעות של נחת בעיניים — בעלה חזר לעבוד והם כבר עומדים על הרגליים.
               </p>
             </div>
           </article>
 
-          {/* Atara's Story */}
-          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right">
-            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0">
-              <AlertCircle className="w-10 h-10" />
-            </div>
+          <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
+            <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><AlertCircle className="w-10 h-10" /></div>
             <div className="space-y-4">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">התקווה של עטרה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
-                עטרה היא אמא חד הורית גיבורה מאשדוד שמתמודדת עם השלכות של גידול בראש. בתחילת המלחמה היא מצאה את עצמה ללא עבודה ועם תינוק בן חצי שנה שצריך לישון שבע. הגענו אליה עם ארגז חירום והכנסנו אותה לפרויקט שלנו. זה השקט שלה — לדעת שבתוך כל הקושי, האוכל של התינוק מובטח.
+                עטרה היא אמא חד הורית גיבורה מאשדוד שמתמודדת עם השלכות של גידול בראש. הבאנו לה ארגז חירום והכנסנו אותה לפרויקט שלנו. זה השקט שלה — לדעת שבתוך כל הקושי, האוכל של התינוק מובטח.
               </p>
             </div>
           </article>
 
           <div className="pt-12">
-            <button 
-              onClick={scrollToDonation}
-              className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl"
-            >
-              אני רוצה להיות שותף
-            </button>
+            <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">אני רוצה להיות שותף</button>
           </div>
         </div>
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 4.1 Additional Heart-to-Heart Stories */}
-      <section className="py-24 bg-white px-4 border-t border-soft-pink-50">
-        <div className="max-w-6xl mx-auto space-y-16">
+      <section className="relative py-32 bg-white px-4">
+        <div className="max-w-6xl mx-auto space-y-16 relative z-10">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-bold text-gray-900">עוד רגעים שאני לא שוכח</h2>
             <p className="text-lg text-gray-500">כל פניה היא עולם ומלואו של תקווה ושובע</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Mazal & David */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הבית של מזל ודוד</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                מזל ודוד היו זוג מאושר עד שהשריפה לקחה הכל — את רכושם ואת אביו של דוד. בתוך השכול והדיכאון, מזל פנתה אלי כדי שלפחות לתינוק יהיה את השובע שלו. היא מעולם לא דמיינה שתצטרך לבקש אוכל, ואנחנו כאן כדי לתת לה אותו בכבוד.
-              </p>
-            </div>
-
-            {/* Avishag */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">ההודעה של אבישג</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                בשתיים בלילה קיבלתי הודעה מאבישג. בתוך הליך גירושין קשה וללא תמיכה, היא רק רצתה לדעת שיהיה לה מטרנה וטיטולים למחר. המתנדבים המדהימים שלנו נרתמו מיד כדי לוודא שהיא לא תישאר חסרת אונים מול עריסה ריקה.
-              </p>
-            </div>
-
-            {/* Moti */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">המאבק של מוטי</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                מוטי הוא אבא גיבור שמגדל לבדו תינוק בן חודשיים לאחר שהאם אושפזה. הוא נלחם בכל כוחו כדי להעניק לילד בית חם ולא לוותר עליו. התפקיד שלי הוא להסיר ממנו את הדאגה לאוכל וציוד, כדי שיוכל להתמקד רק בטיפול ובאהבה.
-              </p>
-            </div>
-
-            {/* Lipaz */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הגבורה של ליפז</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                ליפז בת ה-24 עברה התעללות קשה, והתינוקת שלה זקוקה לטיפול מיוחד. היא נלחמת על הילדה שלה מול חובות ומציאות מורכבת. אנחנו שם כדי לספק לה את הביטחון התזונתי והציוד החיוני, כדי שהיא תוכל להמשיך במאבק על עתיד בתה.
-              </p>
-            </div>
-
-            {/* Miri */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הכוחות של מירי</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                מירי מתמודדת עם אי ספיקת כליות ומשפחה ברוכת ילדים, כשגם בעלה זקוק לתמיכה. במציאות רפואית וכלכלית כל כך מורכבת, לספק להם אוכל וביגוד לתינוקות זה לא רק עזרה — זה אוויר לנשימה.
-              </p>
-            </div>
-
-            {/* Emma */}
-            <div className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">הבקשה של אמה</h3>
-              <p className="text-gray-600 leading-relaxed font-light flex-grow">
-                אמה מנתניה מטפלת במסירות בתינוקת שלה ובשאר ילדיה. היא פנתה אלינו כי פשוט לא היה לה איך להשיג את הציוד הבסיסי ביותר — טיטולים ואוכל. הידיעה שלתינוקת שלה לא יחסר דבר היא כל מה שהיא צריכה כדי להמשיך הלאה.
-              </p>
-            </div>
+            {[
+              { title: "הבית של מזל ודוד", text: "מזל ודוד איבדו הכל בשריפה. בתוך השכול, מזל פנתה אלי כדי שלפחות לתינוק יהיה את השובע שלו. אנחנו כאן כדי לתת לה אותו בכבוד." },
+              { title: "ההודעה של אבישג", text: "בשתיים בלילה קיבלתי הודעה מאבישג. בתוך גירושין קשים, היא רק רצתה לדעת שיהיה לה מטרנה למחר. המתנדבים שלנו נרתמו מיד." },
+              { title: "המאבק של מוטי", text: "מוטי מגדל לבדו תינוק בן חודשיים. התפקיד שלי הוא להסיר ממנו את הדאגה לאוכל וציוד, כדי שיוכל להתמקד רק בטיפול ובאהבה." },
+              { title: "הגבורה של ליפז", text: "ליפז עברה התעללות קשה, והתינוקת שלה זקוקה לטיפול מיוחד. אנחנו שם כדי לספק לה ביטחון תזונתי כדי שתוכל להמשיך להילחם." },
+              { title: "הכוחות של מירי", text: "מירי מתמודדת עם אי ספיקת כליות ומשפחה גדולה. לספק להם אוכל וביגוד לתינוקות זה לא רק עזרה — זה אוויר לנשימה." },
+              { title: "הבקשה של אמה", text: "אמה מנתניה מטפלת במסירות בתינוקת שלה. הידיעה שלתינוקת שלה לא יחסר דבר היא כל מה שהיא צריכה כדי להמשיך הלאה." }
+            ].map((story, i) => (
+              <div key={i} className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
+                <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">{story.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{story.text}</p>
+              </div>
+            ))}
           </div>
-          
           <div className="pt-12 flex justify-center">
-            <button 
-              onClick={scrollToDonation}
-              className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
-            >
-              אני רוצה לעזור לעוד אמא
-            </button>
+            <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
+        <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 bg-white px-4">
-        <div className="max-w-6xl mx-auto space-y-24">
+      <section className="relative py-40 bg-[#fff5f7] px-4 overflow-hidden">
+        <div className="max-w-6xl mx-auto space-y-24 relative z-10">
           <div className="space-y-12 text-center">
             <h2 className="text-4xl font-bold text-gray-900">הפעילות שלי בשטח</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="aspect-video bg-soft-pink-50/50 rounded-[2.5rem] border border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:shadow-xl transition-all">
+                <div key={i} className="aspect-video bg-white rounded-[2.5rem] border border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:shadow-xl transition-all shadow-sm">
                   <img src={`/org-activity (${i}).jpeg`} alt={`פעילות עמותה ${i}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
               ))}
             </div>
           </div>
-
           <div className="space-y-12 text-center">
             <h2 className="text-4xl font-bold text-gray-900">קולות של אמהות רגועות</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-200 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all">
-                  <div className="h-full w-full overflow-hidden">
-                    <img src={`/whatsapp-screenshot (${i}).jpeg`} alt={`צילום מסך וואטסאפ ${i}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
+                <div key={i} className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-100 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all">
+                  <img src={`/whatsapp-screenshot (${i}).jpeg`} alt={`צילום מסך וואטסאפ ${i}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
               ))}
             </div>
-          </div>
-          <div className="pt-16 flex justify-center">
-            <button 
-              onClick={scrollToDonation}
-              className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md"
-            >
-              אני רוצה לעזור לעוד אמא
-            </button>
+            <div className="pt-16 flex justify-center">
+              <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
+            </div>
           </div>
         </div>
+        <WaveDivider color="#f96894" position="bottom" />
       </section>
 
       {/* 5. The Choice Section */}
-      <section className="py-32 bg-soft-pink-600 text-white px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+      <section className="relative py-40 bg-soft-pink-600 text-white px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
           <AlertCircle className="w-20 h-20 mx-auto opacity-80" />
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">איך אני יכול לבחור מי ילך לישון שבע?</h2>
           <p className="text-2xl md:text-3xl font-light leading-relaxed opacity-95">
             השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו, ולכל אמא יהיה את השקט שלה. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
           </p>
-          <div className="pt-8">
-            <p className="text-2xl font-bold italic border-t border-white/20 pt-10">
-              בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.
-            </p>
-          </div>
+          <p className="text-2xl font-bold italic border-t border-white/20 pt-10">בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.</p>
         </div>
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 6. Action Section */}
-      <section ref={donationRef} className="py-32 bg-white px-4">
-        <div className="max-w-6xl mx-auto">
+      <section ref={donationRef} className="relative py-40 bg-white px-4">
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-20 space-y-4">
             <h2 className="text-5xl font-bold text-gray-900">עזרו לי להעניק להם שובע</h2>
             <p className="text-2xl text-gray-500">בחרו איך אתם רוצים לעזור לעוד תינוק ללכת לישון שבע</p>
           </div>
-          
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white border-2 border-soft-pink-100 rounded-[3.5rem] p-10 flex flex-col items-center text-center hover:shadow-2xl transition-all hover:-translate-y-2 group">
-              <div className="w-20 h-20 bg-soft-pink-50 rounded-full flex items-center justify-center mb-8 group-hover:bg-soft-pink-500 transition-colors"><Sun className="w-10 h-10 text-soft-pink-500 group-hover:text-white" /></div>
-              <h3 className="text-3xl font-bold mb-4">מארז שקט מיידי</h3>
-              <p className="text-gray-500 mb-8 text-lg leading-relaxed">להבטיח לתינוק ימים של שובע ולתת לאמא רגע של נשימה</p>
-              <div className="text-4xl font-bold text-soft-pink-600 mb-10">₪198</div>
-              <button onClick={() => handleExternalDonate(198)} className="w-full bg-soft-pink-500 text-white py-5 rounded-2xl font-bold text-xl shadow-lg hover:bg-soft-pink-600 transition-colors">אני נותן לתינוק שובע</button>
-            </div>
-
-            <div className="bg-white border-4 border-soft-pink-500 rounded-[3.5rem] p-10 flex flex-col items-center text-center shadow-2xl relative scale-105 z-10">
-              <div className="absolute -top-6 bg-soft-pink-500 text-white px-8 py-2 rounded-full font-bold">חודש של שקט נפשי</div>
-              <div className="w-20 h-20 bg-soft-pink-500 rounded-full flex items-center justify-center mb-8"><Calendar className="w-10 h-10 text-white" /></div>
-              <h3 className="text-3xl font-bold mb-4">מארז שובע חודשי</h3>
-              <p className="text-gray-600 mb-8 text-lg leading-relaxed">לוודא שלמתוק שלה לא יחסר דבר במשך חודש שלם</p>
-              <div className="text-4xl font-bold text-soft-pink-600 mb-10">₪360</div>
-              <button onClick={() => handleExternalDonate(360)} className="w-full bg-soft-pink-600 text-white py-5 rounded-2xl font-bold text-xl shadow-lg hover:bg-soft-pink-700 transition-colors">אני נותן חודש של שקט</button>
-            </div>
-
-            <div className="bg-white border-2 border-soft-pink-100 rounded-[3.5rem] p-10 flex flex-col items-center text-center hover:shadow-2xl transition-all hover:-translate-y-2 group">
-              <div className="w-20 h-20 bg-soft-pink-50 rounded-full flex items-center justify-center mb-8 group-hover:bg-soft-pink-500 transition-colors"><PlusCircle className="w-10 h-10 text-soft-pink-500 group-hover:text-white" /></div>
-              <h3 className="text-3xl font-bold mb-4">תמיכה מקיפה</h3>
-              <p className="text-gray-500 mb-8 text-lg leading-relaxed">להעניק לתינוק ולאמא את כל הביטחון שהם צריכים כדי לגדול בנחת</p>
-              <div className="text-4xl font-bold text-soft-pink-600 mb-10">₪558</div>
-              <button onClick={() => handleExternalDonate(558)} className="w-full bg-soft-pink-500 text-white py-5 rounded-2xl font-bold text-xl shadow-lg hover:bg-soft-pink-600 transition-colors">אני נותן ביטחון מלא</button>
-            </div>
+            {[
+              { title: "מארז שקט מיידי", text: "להבטיח לתינוק ימים של שובע ולתת לאמא רגע של נשימה", price: 198, icon: <Sun className="w-10 h-10" />, btn: "אני נותן לתינוק שובע" },
+              { title: "מארז שובע חודשי", text: "לוודא שלמתוק שלה לא יחסר דבר במשך חודש שלם", price: 360, icon: <Calendar className="w-10 h-10" />, btn: "אני נותן חודש של שקט", popular: true },
+              { title: "תמיכה מקיפה", text: "להעניק לתינוק ולאמא את כל הביטחון שהם צריכים", price: 558, icon: <PlusCircle className="w-10 h-10" />, btn: "אני נותן ביטחון מלא" }
+            ].map((pkg, i) => (
+              <div key={i} className={`bg-white border-2 ${pkg.popular ? 'border-soft-pink-500 shadow-2xl scale-105 z-10' : 'border-soft-pink-100'} rounded-[3.5rem] p-10 flex flex-col items-center text-center hover:shadow-2xl transition-all hover:-translate-y-2 group relative`}>
+                {pkg.popular && <div className="absolute -top-6 bg-soft-pink-500 text-white px-8 py-2 rounded-full font-bold shadow-lg">הנפוץ ביותר</div>}
+                <div className={`w-20 h-20 ${pkg.popular ? 'bg-soft-pink-500 text-white' : 'bg-soft-pink-50 text-soft-pink-500'} rounded-full flex items-center justify-center mb-8 group-hover:bg-soft-pink-600 group-hover:text-white transition-colors`}>{pkg.icon}</div>
+                <h3 className="text-3xl font-bold mb-4">{pkg.title}</h3>
+                <p className="text-gray-500 mb-8 text-lg leading-relaxed">{pkg.text}</p>
+                <div className="text-4xl font-bold text-soft-pink-600 mb-10">₪{pkg.price}</div>
+                <button onClick={() => handleExternalDonate(pkg.price)} className="w-full bg-soft-pink-500 text-white py-5 rounded-2xl font-bold text-xl shadow-lg hover:bg-soft-pink-600 transition-colors">{pkg.btn}</button>
+              </div>
+            ))}
           </div>
-
-          <div className="bg-soft-pink-50 p-12 rounded-[4rem] text-center max-w-2xl mx-auto border border-soft-pink-100">
+          <div className="bg-soft-pink-50 p-12 rounded-[4rem] text-center max-w-2xl mx-auto border border-soft-pink-100 shadow-sm">
             <h4 className="text-2xl font-bold mb-6">רוצים לעזור לי בסכום אחר?</h4>
             <p className="text-gray-600 mb-10 text-lg">כל עזרה שלכם מאפשרת לי להעניק לעוד תינוק את השובע שלו</p>
             <button onClick={() => handleExternalDonate()} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all">עזרה בכל סכום</button>
@@ -325,19 +276,18 @@ const App: React.FC = () => {
       </section>
 
       {/* 7. Footer */}
-      <footer ref={footerRef} className="bg-soft-pink-700 text-white px-4 pt-16 pb-12 rounded-t-[5rem] overflow-hidden relative">
-        <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
+      <footer ref={footerRef} className="relative bg-soft-pink-700 text-white px-4 pt-24 pb-12 rounded-t-[5rem] overflow-hidden">
+        <WaveDivider color="#ffffff" position="top" />
+        <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10 mt-12">
           <div className="bg-white p-4 rounded-3xl mb-8 shadow-xl"><Heart className="w-10 h-10 text-soft-pink-600 fill-soft-pink-100" /></div>
           <div className="grid md:grid-cols-2 gap-12 w-full mb-12 items-center">
             <div className="space-y-4">
               <h4 className="text-3xl font-bold">תינוקות של החיים</h4>
-              <p className="text-xl opacity-90 leading-relaxed max-w-md mx-auto">
-                אני כאן כדי לוודא שכל תינוק ילך לישון שבע ושכל אמא תהיה רגועה. ביחד אנחנו נותנים להם התחלה רכה.
-              </p>
+              <p className="text-xl opacity-90 leading-relaxed max-w-md mx-auto">אני כאן כדי לוודא שכל תינוק ילך לישון שבע ושכל אמא תהיה רגועה. ביחד אנחנו נותנים להם התחלה רכה.</p>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6 text-right md:text-center">
               <h4 className="text-xl font-bold">הצטרפו אלי למשימה</h4>
-              <button onClick={scrollToDonation} className="bg-white text-soft-pink-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-soft-pink-50 transition-all">עזרו לי להשביע אותם</button>
+              <button onClick={scrollToDonation} className="bg-white text-soft-pink-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-soft-pink-50 transition-all shadow-lg">עזרו לי להשביע אותם</button>
               <p className="text-sm opacity-60">הפעילות מתבצעת בשיתוף עמותת עולל עזרה ואהבה ע"ר | סעיף 46 מוכר לצרכי מס</p>
             </div>
           </div>
