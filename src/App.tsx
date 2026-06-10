@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Heart, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle } from 'lucide-react';
 
 const WaveDivider: React.FC<{ color: string; flip?: boolean; position: 'top' | 'bottom' }> = ({ color, flip, position }) => (
-  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${position === 'top' ? 'top-0' : 'bottom-0'} ${flip ? 'rotate-180' : ''}`}>
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
+  <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-10 ${position === 'top' ? 'top-[-1px]' : 'bottom-[-1px]'} ${flip ? 'rotate-180' : ''}`}>
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="relative block w-full h-[50px] md:h-[100px]">
       <path 
-        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113,1.42,1200,42.47V0Z" 
-        style={{ fill: color }}
+        fill={color} 
+        d="M0,160L48,176C96,192,192,208,288,186.7C384,165,480,107,576,112C672,117,768,181,864,181.3C960,181,1056,117,1152,96C1248,75,1344,96,1392,106.7L1440,117L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
       ></path>
     </svg>
   </div>
@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
       {/* 2. Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-soft-pink-100/40 to-white overflow-hidden">
-        <div className="max-w-4xl animate-in fade-in zoom-in-95 duration-1000 z-10">
+        <div className="max-w-4xl animate-in fade-in zoom-in-95 duration-1000 z-30 relative">
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-full w-fit mx-auto mb-10 shadow-sm border border-soft-pink-100">
             <Heart className="w-16 h-16 text-soft-pink-500 fill-soft-pink-50" />
           </div>
@@ -78,21 +78,21 @@ const App: React.FC = () => {
           </p>
           <button
             onClick={scrollToDonation}
-            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto relative z-20"
+            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto"
           >
             אני רוצה לתת לתינוק לישון שבע <ChevronLeft className="w-10 h-10" />
           </button>
         </div>
-        {/* Adjusted background circle to not cut the division */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-soft-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse z-0"></div>
-        <WaveDivider color="#ffffff" position="bottom" flip />
+        {/* Wave to White Section 3 */}
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 3. Description Section */}
       <section className="relative py-32 bg-white px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative z-20">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 text-right">
               <div className="inline-block px-6 py-2 bg-soft-pink-100 text-soft-pink-700 rounded-full font-bold text-sm">סיפורו של פעיל בעמותת עולל</div>
               <h2 className="text-5xl font-bold leading-tight text-gray-900">למה אני פועל בתינוקות של החיים</h2>
               <p className="text-2xl text-gray-600 leading-relaxed font-light">
@@ -122,12 +122,13 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
+        {/* Wave to Pinkish Section 4 */}
         <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* 4. Stories from the Field - War Edition */}
-      <section className="relative py-40 bg-[#fff5f7] px-4">
-        <div className="max-w-4xl mx-auto space-y-16 text-center relative z-10">
+      <section className="relative py-40 bg-[#fff5f7] px-4 overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-16 text-center relative z-20">
           <div className="text-center space-y-4">
             <h2 className="text-5xl font-bold text-gray-900">סיפורים מהמלחמה</h2>
             <p className="text-xl text-soft-pink-600 font-medium">מאז ה-7.10, הלב שלי פוגש גבורה ושברון לב בכל יום</p>
@@ -136,7 +137,7 @@ const App: React.FC = () => {
           
           <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><BookOpen className="w-10 h-10" /></div>
-            <div className="space-y-4">
+            <div className="space-y-4 text-right">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">השקט של שוהם הקטנה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
                 פגשתי את נעמי באשדוד, אמא לשישה שסוחבת על גבה עול בלתי יאומן. היא בהריון מתקדם והמלחמה השאירה אותם ללא פרנסה. כשמסרתי לה את התמ"ל והטיטולים עבור שוהם התינוקת, ראיתי איך האבן נגולה מעל ליבה. היא רק רצתה לדעת שהתינוקת שבעה.
@@ -146,7 +147,7 @@ const App: React.FC = () => {
 
           <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><Heart className="w-10 h-10" /></div>
-            <div className="space-y-4">
+            <div className="space-y-4 text-right">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">יד מושטת לגליה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
                 גליה עברה לאשדוד באמצע המלחמה, פצועה אחרי ניתוח. עזרנו להם עם מטרנות וטיטולים בדיוק ברגעים שהכל נראה אבוד. היום גליה הודתה לי עם דמעות של נחת בעיניים — בעלה חזר לעבוד והם כבר עומדים על הרגליים.
@@ -156,7 +157,7 @@ const App: React.FC = () => {
 
           <article className="group flex flex-col md:flex-row gap-8 items-start bg-white p-10 rounded-[3.5rem] shadow-sm border border-soft-pink-50 text-right hover:shadow-lg transition-all">
             <div className="bg-soft-pink-100 p-6 rounded-[2rem] text-soft-pink-600 group-hover:bg-soft-pink-500 group-hover:text-white transition-all shrink-0"><AlertCircle className="w-10 h-10" /></div>
-            <div className="space-y-4">
+            <div className="space-y-4 text-right">
               <h3 className="text-3xl font-bold text-gray-900 leading-tight">התקווה של עטרה</h3>
               <p className="text-xl text-gray-600 leading-relaxed font-light">
                 עטרה היא אמא חד הורית גיבורה מאשדוד שמתמודדת עם השלכות של גידול בראש. הבאנו לה ארגז חירום והכנסנו אותה לפרויקט שלנו. זה השקט שלה — לדעת שבתוך כל הקושי, האוכל של התינוק מובטח.
@@ -168,12 +169,13 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">אני רוצה להיות שותף</button>
           </div>
         </div>
+        {/* Wave to White Section 4.1 */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 4.1 Additional Heart-to-Heart Stories */}
       <section className="relative py-32 bg-white px-4">
-        <div className="max-w-6xl mx-auto space-y-16 relative z-10">
+        <div className="max-w-6xl mx-auto space-y-16 relative z-20 text-right">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-bold text-gray-900">עוד רגעים שאני לא שוכח</h2>
             <p className="text-lg text-gray-500">כל פניה היא עולם ומלואו של תקווה ושובע</p>
@@ -188,9 +190,9 @@ const App: React.FC = () => {
               { title: "הכוחות של מירי", text: "מירי מתמודדת עם אי ספיקת כליות ומשפחה גדולה. לספק להם אוכל וביגוד לתינוקות זה לא רק עזרה — זה אוויר לנשימה." },
               { title: "הבקשה של אמה", text: "אמה מנתניה מטפלת במסירות בתינוקת שלה. הידיעה שלתינוקת שלה לא יחסר דבר היא כל מה שהיא צריכה כדי להמשיך הלאה." }
             ].map((story, i) => (
-              <div key={i} className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow">
-                <h3 className="text-2xl font-bold mb-4 text-soft-pink-600">{story.title}</h3>
-                <p className="text-gray-600 leading-relaxed font-light">{story.text}</p>
+              <div key={i} className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow text-right">
+                <h3 className="text-2xl font-bold mb-4 text-soft-pink-600 text-right">{story.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light text-right">{story.text}</p>
               </div>
             ))}
           </div>
@@ -198,12 +200,13 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
+        {/* Wave to Pinkish Gallery Section */}
         <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* Gallery Section */}
       <section className="relative py-40 bg-[#fff5f7] px-4 overflow-hidden">
-        <div className="max-w-6xl mx-auto space-y-24 relative z-10">
+        <div className="max-w-6xl mx-auto space-y-24 relative z-20">
           <div className="space-y-12 text-center">
             <h2 className="text-4xl font-bold text-gray-900">הפעילות שלי בשטח</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -228,25 +231,27 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* Wave to Deep Pink Section 5 */}
         <WaveDivider color="#f96894" position="bottom" />
       </section>
 
       {/* 5. The Choice Section */}
-      <section className="relative py-40 bg-soft-pink-600 text-white px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
+      <section className="relative py-48 bg-[#f96894] text-white px-4 overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-20">
           <AlertCircle className="w-20 h-20 mx-auto opacity-80" />
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">איך אני יכול לבחור מי ילך לישון שבע?</h2>
           <p className="text-2xl md:text-3xl font-light leading-relaxed opacity-95">
             השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו, ולכל אמא יהיה את השקט שלה. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
           </p>
-          <p className="text-2xl font-bold italic border-t border-white/20 pt-10">בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.</p>
+          <p className="text-2xl font-bold italic border-t border-white/20 pt-10 text-center">בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.</p>
         </div>
+        {/* Wave to White Action Section */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 6. Action Section */}
-      <section ref={donationRef} className="relative py-40 bg-white px-4">
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section ref={donationRef} className="relative py-40 bg-white px-4 overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-20 text-center mt-12">
           <div className="text-center mb-20 space-y-4">
             <h2 className="text-5xl font-bold text-gray-900">עזרו לי להעניק להם שובע</h2>
             <p className="text-2xl text-gray-500">בחרו איך אתם רוצים לעזור לעוד תינוק ללכת לישון שבע</p>
@@ -273,19 +278,20 @@ const App: React.FC = () => {
             <button onClick={() => handleExternalDonate()} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all">עזרה בכל סכום</button>
           </div>
         </div>
+        {/* Wave to Footer Deep Pink */}
+        <WaveDivider color="#c7245a" position="bottom" />
       </section>
 
       {/* 7. Footer */}
-      <footer ref={footerRef} className="relative bg-soft-pink-700 text-white px-4 pt-24 pb-12 rounded-t-[5rem] overflow-hidden">
-        <WaveDivider color="#ffffff" position="top" />
-        <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10 mt-12">
+      <footer ref={footerRef} className="relative bg-[#c7245a] text-white px-4 pt-16 pb-12 rounded-t-[5rem] overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-20">
           <div className="bg-white p-4 rounded-3xl mb-8 shadow-xl"><Heart className="w-10 h-10 text-soft-pink-600 fill-soft-pink-100" /></div>
           <div className="grid md:grid-cols-2 gap-12 w-full mb-12 items-center">
             <div className="space-y-4">
               <h4 className="text-3xl font-bold">תינוקות של החיים</h4>
               <p className="text-xl opacity-90 leading-relaxed max-w-md mx-auto">אני כאן כדי לוודא שכל תינוק ילך לישון שבע ושכל אמא תהיה רגועה. ביחד אנחנו נותנים להם התחלה רכה.</p>
             </div>
-            <div className="space-y-6 text-right md:text-center">
+            <div className="space-y-6 text-center">
               <h4 className="text-xl font-bold">הצטרפו אלי למשימה</h4>
               <button onClick={scrollToDonation} className="bg-white text-soft-pink-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-soft-pink-50 transition-all shadow-lg">עזרו לי להשביע אותם</button>
               <p className="text-sm opacity-60">הפעילות מתבצעת בשיתוף עמותת עולל עזרה ואהבה ע"ר | סעיף 46 מוכר לצרכי מס</p>
