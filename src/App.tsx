@@ -3,7 +3,7 @@ import { Heart, BookOpen, ChevronLeft, AlertCircle, Sun, Calendar, PlusCircle } 
 
 const WaveDivider: React.FC<{ color: string; flip?: boolean; position: 'top' | 'bottom' }> = ({ color, flip, position }) => (
   <div className={`absolute left-0 w-full overflow-hidden leading-[0] z-20 ${position === 'top' ? 'top-[-1px]' : 'bottom-[-1px]'} ${flip ? 'rotate-180' : ''}`}>
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="relative block w-full h-[50px] md:h-[100px]">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
       <path 
         fill={color} 
         d="M0,160L48,176C96,192,192,208,288,186.7C384,165,480,107,576,112C672,117,768,181,864,181.3C960,181,1056,117,1152,96C1248,75,1344,96,1392,106.7L1440,117L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
       {/* 2. Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-soft-pink-100/40 to-white overflow-hidden">
-        <div className="max-w-4xl animate-in fade-in zoom-in-95 duration-1000 z-30 relative">
+        <div className="max-w-4xl animate-in fade-in zoom-in-95 duration-1000 z-50 relative">
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-full w-fit mx-auto mb-10 shadow-sm border border-soft-pink-100">
             <Heart className="w-16 h-16 text-soft-pink-500 fill-soft-pink-50" />
           </div>
@@ -78,14 +78,14 @@ const App: React.FC = () => {
           </p>
           <button
             onClick={scrollToDonation}
-            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto relative z-40"
+            className="bg-soft-pink-500 text-white px-16 py-7 rounded-[2.5rem] text-3xl font-bold shadow-[0_25px_50px_rgba(232,61,118,0.25)] hover:bg-soft-pink-600 hover:scale-105 transition-all flex items-center gap-4 mx-auto relative z-50"
           >
             אני רוצה לתת לתינוק לישון שבע <ChevronLeft className="w-10 h-10" />
           </button>
         </div>
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-soft-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse z-0"></div>
-        {/* Wave to White (Next section is white) */}
-        <WaveDivider color="#ffffff" position="bottom" flip />
+        {/* Fill the bottom of Hero with White (Next section) */}
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 3. Description Section */}
@@ -122,8 +122,8 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
-        {/* Wave to Pinkish (Next section is #fff5f7) */}
-        <WaveDivider color="#fff5f7" position="bottom" flip />
+        {/* Fill the bottom of White with Light Pink (Next section) */}
+        <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* 4. Stories from the Field - War Edition */}
@@ -169,8 +169,8 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">אני רוצה להיות שותף</button>
           </div>
         </div>
-        {/* Wave to White (Next section is white) */}
-        <WaveDivider color="#ffffff" position="bottom" flip />
+        {/* Fill the bottom of Light Pink with White (Next section) */}
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 4.1 Additional Heart-to-Heart Stories */}
@@ -200,8 +200,8 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
-        {/* Wave to Pinkish (Gallery Section is #fff5f7) */}
-        <WaveDivider color="#fff5f7" position="bottom" flip />
+        {/* Fill the bottom of White with Light Pink (Gallery bg is #fff5f7) */}
+        <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
       {/* Gallery Section */}
@@ -221,7 +221,7 @@ const App: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900">קולות של אמהות רגועות</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-100 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all">
+                <div key={i} className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-200 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all">
                   <img src={`/whatsapp-screenshot (${i}).jpeg`} alt={`צילום מסך וואטסאפ ${i}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
               ))}
@@ -231,8 +231,8 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Wave to Deep Pink (Choice section is #f96894) */}
-        <WaveDivider color="#f96894" position="bottom" flip />
+        {/* Fill the bottom of Light Pink with Deep Pink (Choice bg is #f96894) */}
+        <WaveDivider color="#f96894" position="bottom" />
       </section>
 
       {/* 5. The Choice Section */}
@@ -241,12 +241,12 @@ const App: React.FC = () => {
           <AlertCircle className="w-20 h-20 mx-auto opacity-80" />
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">איך אני יכול לבחור מי ילך לישון שבע?</h2>
           <p className="text-2xl md:text-3xl font-light leading-relaxed opacity-95">
-            השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
+            השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו, ולכל אמא יהיה את השקט שלה. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
           </p>
           <p className="text-2xl font-bold italic border-t border-white/20 pt-10 text-center">בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.</p>
         </div>
-        {/* Wave to White (Action Section is white) */}
-        <WaveDivider color="#ffffff" position="bottom" flip />
+        {/* Fill the bottom of Deep Pink with White (Action Section is white) */}
+        <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
       {/* 6. Action Section */}
@@ -278,8 +278,8 @@ const App: React.FC = () => {
             <button onClick={() => handleExternalDonate()} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all">עזרה בכל סכום</button>
           </div>
         </div>
-        {/* Wave to Footer Color (#c7245a) */}
-        <WaveDivider color="#c7245a" position="bottom" flip />
+        {/* Fill the bottom of White with the Footer Deep Pink (#c7245a) */}
+        <WaveDivider color="#c7245a" position="bottom" />
       </section>
 
       {/* 7. Footer */}
