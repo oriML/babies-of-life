@@ -189,20 +189,75 @@ const App: React.FC = () => {
               { title: "הגבורה של ליפז", text: "ליפז עברה התעללות קשה, והתינוקת שלה זקוקה לטיפול מיוחד. אנחנו שם כדי לספק לה ביטחון תזונתי." },
               { title: "הכוחות של מירי", text: "מירי מתמודדת עם אי ספיקת כליות ומשפחה גדולה. לספק להם אוכל וביגוד לתינוקות זה לא רק עזרה — זה אוויר לנשימה." },
               { title: "הבקשה של אמה", text: "אמה מנתניה מטפלת במסירות בתינוקת שלה. הידיעה שלתינוקת שלה לא יחסר דבר היא כל מה שהיא צריכה." }
-            ].map((story, i) => (
+              ].map((story, i) => (
               <div key={i} className="bg-soft-pink-50/30 p-8 rounded-[3rem] border border-soft-pink-100 flex flex-col h-full hover:shadow-md transition-shadow text-right">
                 <h3 className="text-2xl font-bold mb-4 text-soft-pink-600 text-right">{story.title}</h3>
                 <p className="text-gray-600 leading-relaxed font-light text-right">{story.text}</p>
               </div>
-            ))}
-          </div>
-          <div className="pt-12 flex justify-center">
-            <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
-          </div>
-        </div>
-        {/* Fill the bottom of White with Light Pink (Gallery bg is #fff5f7) */}
-        <WaveDivider color="#fff5f7" position="bottom" />
-      </section>
+              ))}
+              </div>
+              <div className="pt-12 flex justify-center">
+              <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
+              </div>
+              </div>
+              {/* Wave to Pinkish Celebrities Section */}
+              <WaveDivider color="#fff5f7" position="bottom" flip />
+              </section>
+
+              {/* 4.2 Celebrities Section */}
+              <section className="relative py-32 bg-[#fff5f7] px-4 overflow-hidden">
+              <div className="max-w-6xl mx-auto space-y-16 relative z-20 text-right">
+              <div className="text-center space-y-4">
+              <h2 className="text-5xl font-bold text-gray-900">סלבס נרתמים למען התינוקות</h2>
+              <p className="text-xl text-soft-pink-600 font-medium text-center">הלב הגדול של ישראל מגיע לשטח כדי להבטיח שכל תינוק ילך לישון שבע</p>
+              <div className="w-24 h-1.5 bg-soft-pink-300 mx-auto rounded-full opacity-50"></div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+              <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
+              <img 
+                src="/selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב - דון לני גבאי ויאנה יוסף.jpeg" 
+                alt="דון לני גבאי ויאנה יוסף מתנדבות" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white text-right">
+                <p className="text-xl font-bold">דון לני גבאי ויאנה יוסף</p>
+                <p className="text-sm opacity-80">במבצע אריזה וחלוקה</p>
+              </div>
+              </div>
+
+              <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
+              <img 
+                src="/selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב ג'קי אזולאי ואודליה סויסה.jpeg" 
+                alt="ג'קי אזולאי ואודליה סויסה מתנדבות" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white text-right">
+                <p className="text-xl font-bold">ג'קי אזולאי ואודליה סויסה</p>
+                <p className="text-sm opacity-80">מביאות חיוך ושובע לבתים</p>
+              </div>
+              </div>
+
+              <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
+              <img 
+                src="/selebs-photos/סלבס מגיעים להתנדב תמונה מעיתון.jpeg" 
+                alt="סלבס מתנדבים מהעיתונות" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white text-right">
+                <p className="text-xl font-bold">נתינה ללא גבולות</p>
+                <p className="text-sm opacity-80">תיעוד מתוך כתבה בעיתון</p>
+              </div>
+              </div>
+              </div>
+
+              <div className="pt-12 flex justify-center">
+              <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">גם אני רוצה להירתם</button>
+              </div>
+              </div>
+              {/* Wave to White Section (Gallery Section logic needs adjustment to match next) */}
+              <WaveDivider color="#ffffff" position="bottom" flip />
+              </section>
 
       {/* Gallery Section */}
       <section className="relative py-40 bg-[#fff5f7] px-4 overflow-hidden">
