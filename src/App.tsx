@@ -84,7 +84,7 @@ const App: React.FC = () => {
           </button>
         </div>
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-soft-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse z-0"></div>
-        {/* Fill the bottom with White (Next is 3) */}
+        {/* Fill bottom of Hero with White (Description Section) */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
@@ -113,7 +113,7 @@ const App: React.FC = () => {
                 <span className="text-5xl font-bold text-soft-pink-500">50%</span>
                 <p className="text-lg font-bold text-gray-800 leading-tight">עלייה בביקוש לתמ"ל רפואי</p>
               </div>
-              <div className="bg-white p-8 rounded-[3rem] shadow-md border border-soft-pink-100 text-center space-y-4 col-span-2">
+              <div className="bg-white p-8 rounded-[3rem] shadow-md border border-soft-pink-50 text-center space-y-4 col-span-2">
                 <p className="text-xl text-gray-600 font-medium text-center">אני שומע את קולן של מאות אימהות בכל חודש</p>
               </div>
             </div>
@@ -122,7 +122,7 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
-        {/* Fill the bottom with Light Pink (Next is 4) */}
+        {/* Fill bottom of White with Pinkish (War Stories Section) */}
         <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
@@ -169,7 +169,7 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">אני רוצה להיות שותף</button>
           </div>
         </div>
-        {/* Fill the bottom with White (Next is 4.1) */}
+        {/* Fill bottom of Pinkish with White (Additional Stories Section) */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
@@ -200,7 +200,7 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all shadow-md">אני רוצה לעזור לעוד אמא</button>
           </div>
         </div>
-        {/* Fill the bottom with Light Pink (Next is 4.2 Celebrities) */}
+        {/* Fill bottom of White with Pinkish (Celebrities Section) */}
         <WaveDivider color="#fff5f7" position="bottom" />
       </section>
 
@@ -255,7 +255,7 @@ const App: React.FC = () => {
             <button onClick={scrollToDonation} className="bg-soft-pink-500 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-soft-pink-600 transition-all shadow-xl">גם אני רוצה להירתם</button>
           </div>
         </div>
-        {/* Fill the bottom with White (Gallery is White) */}
+        {/* Fill bottom of Pinkish with White (Gallery Section) */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
@@ -286,7 +286,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Fill the bottom with Deep Pink (Choice is #f96894) */}
+        {/* Fill bottom of White with Deep Pink (Choice Section) */}
         <WaveDivider color="#f96894" position="bottom" />
       </section>
 
@@ -296,11 +296,11 @@ const App: React.FC = () => {
           <AlertCircle className="w-20 h-20 mx-auto opacity-80" />
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">איך אני יכול לבחור מי ילך לישון שבע?</h2>
           <p className="text-2xl md:text-3xl font-light leading-relaxed opacity-95">
-            השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
+            השאיפה שלי היא שלא אצטרך לבחור לעולם. אני רוצה שלכל תינוק יהיה את השובע שלו, ולכל אמא יהיה את השקט שלה. בעזרתכם, אני יכול להבטיח שלמתוק של עוד אמא לא יחסר דבר הלילה.
           </p>
           <p className="text-2xl font-bold italic border-t border-white/20 pt-10 text-center">בואו נדאג שכל תינוק יקבל את מה שהוא צריך כדי לגדול בנחת.</p>
         </div>
-        {/* Fill the bottom with White (Action Section is White) */}
+        {/* Fill bottom of Deep Pink with White (Action Section) */}
         <WaveDivider color="#ffffff" position="bottom" />
       </section>
 
@@ -333,7 +333,7 @@ const App: React.FC = () => {
             <button onClick={() => handleExternalDonate()} className="bg-white border-2 border-soft-pink-500 text-soft-pink-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-soft-pink-500 hover:text-white transition-all">עזרה בכל סכום</button>
           </div>
         </div>
-        {/* Fill the bottom with Footer Color (#c7245a) */}
+        {/* Fill bottom of White with Footer Deep Pink (#c7245a) */}
         <WaveDivider color="#c7245a" position="bottom" />
       </section>
 
