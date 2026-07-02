@@ -354,7 +354,7 @@ const App: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
               <img
-                src="/selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב - דון לני גבאי ויאנה יוסף.jpeg"
+                src={`${import.meta.env.BASE_URL}selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב - דון לני גבאי ויאנה יוסף.jpeg`}
                 alt="דון לני גבאי ויאנה יוסף מתנדבות"
                 className="w-full h-full object-cover"
               />
@@ -365,7 +365,7 @@ const App: React.FC = () => {
             </div>
             <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
               <img
-                src="/selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב ג'קי אזולאי ואודליה סויסה.jpeg"
+                src={`${import.meta.env.BASE_URL}selebs-photos/תמונה מסטטוס בוואטסאפסלבס מגיעים להתנדב ג'קי אזולאי ואודליה סויסה.jpeg`}
                 alt="ג'קי אזולאי ואודליה סויסה מתנדבות"
                 className="w-full h-full object-cover"
               />
@@ -376,7 +376,7 @@ const App: React.FC = () => {
             </div>
             <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-xl border-4 border-white transition-all hover:scale-[1.02]">
               <img
-                src="/selebs-photos/סלבס מגיעים להתנדב תמונה מעיתון.jpeg"
+                src={`${import.meta.env.BASE_URL}selebs-photos/סלבס מגיעים להתנדב תמונה מעיתון.jpeg`}
                 alt="סלבס מתנדבים מהעיתונות"
                 className="w-full h-full object-cover"
               />
@@ -413,7 +413,7 @@ const App: React.FC = () => {
                   className="aspect-video bg-white rounded-[2.5rem] border border-soft-pink-100 flex items-center justify-center group overflow-hidden hover:shadow-xl transition-all shadow-sm"
                 >
                   <img
-                    src={`/org-activity (${i}).jpeg`}
+                    src={`${import.meta.env.BASE_URL}org-activity (${i}).jpeg`}
                     alt={`פעילות עמותה ${i}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -432,7 +432,7 @@ const App: React.FC = () => {
                   className="aspect-[9/16] bg-white rounded-[2rem] border border-gray-100 flex flex-col overflow-hidden group shadow-sm hover:shadow-xl transition-all"
                 >
                   <img
-                    src={`/whatsapp-screenshot (${i}).jpeg`}
+                    src={`${import.meta.env.BASE_URL}whatsapp-screenshot (${i}).jpeg`}
                     alt={`צילום מסך וואטסאפ ${i}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
